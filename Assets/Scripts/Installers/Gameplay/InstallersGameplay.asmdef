@@ -1,0 +1,21 @@
+﻿{
+  "name": "InstallersGameplay",
+  "references": [
+    "UnityEngine.CoreModule",
+    "UseCaseGameplay",
+    "Infrastructure",
+    "ContractsInterfaces",
+    "InfrastructureRepositories",
+    "UseCaseApplication",
+    "VContainer.Unity",
+    "VContainer",
+    "MessagePipe",
+    "MessagePipe.VContainer",
+    "ContractsInterfaces.UseCasesApplication",
+    "PresentationGameplay",
+    "DomainGameplay",
+    "InfrastructureProvaiders",
+    "DomainApplication",
+    "InfrastructureinputAsset"
+  ]
+}

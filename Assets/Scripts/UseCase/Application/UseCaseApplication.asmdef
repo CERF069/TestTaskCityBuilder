@@ -1,0 +1,12 @@
+﻿{
+  "name": "UseCaseApplication",
+  "references":
+  [ "UnityEngine.CoreModule",
+    "UseCaseGameplay",
+    "Infrastructure",
+    "ContractsInterfaces",
+    "InfrastructureRepositories", 
+    "VContainer.Unity", 
+    "VContainer", 
+    "DomainGameplay" ]
+}

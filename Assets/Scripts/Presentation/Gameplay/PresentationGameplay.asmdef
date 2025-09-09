@@ -1,0 +1,16 @@
+﻿{
+  "name": "PresentationGameplay",
+  "references":
+  [ "UnityEngine.CoreModule",
+    "UseCaseGameplay",
+    "Infrastructure",
+    "ContractsInterfaces",
+    "InfrastructureRepositories",
+    "VContainer.Unity",
+    "VContainer",
+    "DomainGameplay",
+    "MessagePipe",
+    "UniRx",
+    "UniTask"
+  ]
+}

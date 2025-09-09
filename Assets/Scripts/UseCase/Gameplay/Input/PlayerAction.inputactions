@@ -1,0 +1,34 @@
+{
+    "name": "PlayerAction",
+    "maps": [
+        {
+            "name": "Hot Keys",
+            "id": "7f58da9c-70c5-4638-ab4e-c7fb8603a118",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "23c69b9f-46c7-40dc-b445-65fa16c216d2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9eeba3d8-6bdb-4db9-99d5-3baef7f95ffa",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
