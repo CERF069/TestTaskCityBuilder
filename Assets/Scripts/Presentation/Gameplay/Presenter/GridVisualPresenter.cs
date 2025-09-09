@@ -52,7 +52,7 @@ namespace Presentation.Gameplay.Presenter
 
         public void Dispose()
         {
-            _disposables.Dispose();
+            _disposables?.Dispose();
             if (_gridMeshObject != null)
                 GameObject.Destroy(_gridMeshObject);
         }

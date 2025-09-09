@@ -1,21 +1,30 @@
 ﻿using ContractsInterfaces.UseCasesApplication;
+using Infrastructure.Repositories;
 using UnityEngine;
 
-namespace Infrastructure.Repositories
+public class RepositoryRegistry : IRepositoryRegistry
 {
-    public class RepositoryRegistry : IRepositoryRegistry
+    private readonly GridRepository _gridRepository;
+    private readonly BuildingConfigRepository _buildingConfigRepository;
+    private readonly CellHighlightConfigRepository _cellHighlightConfigRepository;
+
+    public RepositoryRegistry(
+        GridRepository gridRepository,
+        BuildingConfigRepository buildingConfigRepository,
+        CellHighlightConfigRepository cellHighlightConfigRepository)
     {
-        private readonly GridRepository _gridRepository;
+        _gridRepository = gridRepository;
+        _buildingConfigRepository = buildingConfigRepository;
+        _cellHighlightConfigRepository = cellHighlightConfigRepository;
+    }
 
-        public RepositoryRegistry(GridRepository gridRepository)
-        {
-            _gridRepository = gridRepository;
-        }
+    public T GetRepository<T>() where T : ScriptableObject
+    {
+        if (typeof(T) == typeof(GridRepository)) return _gridRepository as T;
+        if (typeof(T) == typeof(BuildingConfigRepository)) return _buildingConfigRepository as T;
+        if (typeof(T) == typeof(CellHighlightConfigRepository)) return _cellHighlightConfigRepository as T;
 
-        public T GetRepository<T>() where T : ScriptableObject
-        {
-            if (typeof(T) == typeof(GridRepository)) return _gridRepository as T;
-            return null;
-        }
+        Debug.LogError($"Repository of type {typeof(T)} not found!");
+        return null;
     }
 }

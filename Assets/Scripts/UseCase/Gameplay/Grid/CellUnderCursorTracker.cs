@@ -13,7 +13,7 @@ namespace UseCase.Gameplay.Grid
         private readonly IPublisher<CellUnderCursorMessage> _publisher;
         private readonly float _selectionRadius;
         private GridCellModel _lastCellUnderCursor;
-
+        public GridCellModel LastCellUnderCursor => _lastCellUnderCursor;
         private bool _cameraDragging;
 
         public CellUnderCursorTracker(
@@ -34,7 +34,7 @@ namespace UseCase.Gameplay.Grid
 
         public void Tick()
         {
-            if (_cameraDragging) return; // не обновляем ячейку во время drag
+            if (_cameraDragging) return;
             SelectNearestCell();
         }
 

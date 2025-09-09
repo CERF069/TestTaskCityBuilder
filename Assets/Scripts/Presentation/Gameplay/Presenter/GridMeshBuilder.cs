@@ -9,8 +9,7 @@ namespace Presentation.Gameplay.Presenter
         public GameObject BuildGridMesh(GridModel grid, Vector3 origin, Material material, float lineWidth)
         {
             GameObject go = new GameObject("GridMesh");
-
-            // Вертикальные линии
+            
             for (int x = 0; x <= grid.Width; x++)
             {
                 float halfCell = grid.CellSize * 0.5f;
@@ -23,8 +22,7 @@ namespace Presentation.Gameplay.Presenter
 
                 CreateLine(go.transform, new Vector3(xPos, origin.y, zStart), new Vector3(xPos, origin.y, zEnd), material, lineWidth);
             }
-
-            // Горизонтальные линии
+            
             for (int y = 0; y <= grid.Height; y++)
             {
                 float halfCell = grid.CellSize * 0.5f;

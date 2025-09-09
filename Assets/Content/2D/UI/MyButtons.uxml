@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; flex-direction: column;">
+        <ui:Button text="House" name="HouseButton" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-width: 2px; width: 152px; height: 142px; white-space: pre; margin-left: 43px; margin-top: 119px;" />
+        <ui:Button text="Farm&#10;" name="FarmButton" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-width: 2px; width: 152px; height: 142px; white-space: pre; margin-left: 43px; margin-top: 125px;" />
+        <ui:Button text="Mine&#10;" name="MineButton" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-width: 2px; width: 152px; height: 142px; white-space: pre; -unity-text-align: middle-center; margin-left: 43px; margin-top: 138px;" />
+    </ui:VisualElement>
+</ui:UXML>

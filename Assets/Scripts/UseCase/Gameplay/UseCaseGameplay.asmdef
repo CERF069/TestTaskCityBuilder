@@ -10,6 +10,7 @@
     "InfrastructureProvaiders",
     "DomainApplication",
     "InfrastructureInput",
-    "Unity.InputSystem"
+    "Unity.InputSystem",
+    "InfrastructureRepositories"
   ]
 }

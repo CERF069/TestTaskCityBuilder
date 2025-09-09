@@ -3,7 +3,7 @@ using Domain.Gameplay.MessagesDto.Grid;
 using Domain.Gameplay.Model.Grid;
 using MessagePipe;
 
-namespace UseCase.Gameplay.Grid
+namespace Infrastructure.Providers
 {
     public class GridProvider : IGridProvider
     {
@@ -11,15 +11,15 @@ namespace UseCase.Gameplay.Grid
 
         public GridProvider(IPublisher<GridCreatedMessage> publisher)
         {
-            _publisher = publisher;
+            this._publisher = publisher;
         }
 
         public GridModel CurrentGrid { get; private set; }
 
         public void SetGrid(GridModel grid)
         {
-            CurrentGrid = grid;
-            _publisher.Publish(new GridCreatedMessage(grid));
+            this.CurrentGrid = grid;
+            this._publisher.Publish(new GridCreatedMessage(grid));
         }
     }
 }

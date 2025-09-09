@@ -1,5 +1,4 @@
 ﻿using Domain.Gameplay.Model.Grid;
-using UnityEngine;
 
 namespace ContractsInterfaces.UseCasesApplication
 { 

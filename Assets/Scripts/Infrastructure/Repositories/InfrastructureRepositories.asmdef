@@ -1,4 +1,4 @@
 ﻿{
   "name": "InfrastructureRepositories",
-  "references":[ "ContractsInterfaces" ]
+  "references":[ "ContractsInterfaces", "DomainGameplay" ]
 }
