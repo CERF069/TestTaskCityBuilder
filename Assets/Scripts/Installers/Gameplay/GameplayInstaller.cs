@@ -1,5 +1,7 @@
 ﻿using System;
 using ContractsInterfaces.UseCasesApplication;
+using ContractsInterfaces.UseCasesGameplay;
+using Domain.Gameplay.MessagesDto.Camera;
 using Domain.Gameplay.MessagesDto.Grid;
 using Infrastructure.Repositories;
 using UnityEngine;
@@ -11,6 +13,7 @@ using VContainer;
 using VContainer.Unity;
 using MessagePipe;
 using Presentation.Gameplay.Presenter;
+using UseCase.Gameplay.Camera;
 
 namespace Installers.Gameplay
 {
@@ -29,7 +32,8 @@ namespace Installers.Gameplay
         [SerializeField] private Transform cellMeshObject;
         
         
-
+        [Header("Camera Config")]
+        [SerializeField] private CameraConfigRepository cameraConfig;
 
 
         protected override void Configure(IContainerBuilder builder)
@@ -46,12 +50,33 @@ namespace Installers.Gameplay
             RegisterGetGridUseCases(builder);
 
             RegisterGameInitializer(builder);
+            
+            RegisterCameraSystem(builder);
         }
 
         private void RegisterCameraSystem(IContainerBuilder builder)
         {
-      
+            Camera mainCamera = Camera.main;
+
+            builder.Register(resolver =>
+                        new CameraMovement(
+                            mainCamera,
+                            resolver.Resolve<IPublisher<CameraDragStartedMessage>>(),
+                            resolver.Resolve<IPublisher<CameraDragEndedMessage>>(),
+                            cameraConfig.MoveSpeed,
+                            cameraConfig.DragSpeed,
+                            cameraConfig.ZoomSpeed,
+                            cameraConfig.MinZoom,
+                            cameraConfig.MaxZoom
+                        ),
+                    Lifetime.Singleton
+                )
+                .As<ICameraMovementUseCase>()
+                .As<ITickable>()
+                .As<IInitializable>()
+                .As<IDisposable>();
         }
+
         private void RegisterPresenters(IContainerBuilder builder)
         {
             builder.Register<GridMeshBuilder>(Lifetime.Singleton);
@@ -81,13 +106,18 @@ namespace Installers.Gameplay
             builder.Register<GetGridCellUseCase>(Lifetime.Singleton);
 
             builder.Register(resolver =>
-                    new CellUnderCursorTracker(
-                        resolver.Resolve<GetGridCellUseCase>(),
-                        resolver.Resolve<IPublisher<CellUnderCursorMessage>>(),
-                        selectionRadius: 1f
-                    ), Lifetime.Singleton)
+                        new CellUnderCursorTracker(
+                            resolver.Resolve<GetGridCellUseCase>(),
+                            resolver.Resolve<IPublisher<CellUnderCursorMessage>>(),
+                            resolver.Resolve<ISubscriber<CameraDragStartedMessage>>(),
+                            resolver.Resolve<ISubscriber<CameraDragEndedMessage>>(),
+                            selectionRadius: 1f
+                        ),
+                    Lifetime.Singleton
+                )
                 .As<ITickable>();
         }
+
 
         private void RegisterRepositories(IContainerBuilder builder)
         {

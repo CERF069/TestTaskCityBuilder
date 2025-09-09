@@ -1,14 +1,14 @@
 {
-    "name": "Player",
+    "name": "GameplayControls",
     "maps": [
         {
             "name": "Camera",
-            "id": "dfa33a9a-f23a-4eb3-a7e3-23f11a96d183",
+            "id": "912dabad-bf0b-4d68-b264-e3aa351400cf",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "eb7bc9b0-64e1-41c8-8df9-4a84de12f333",
+                    "id": "3e15c154-5544-4ac0-9686-93cba7584b5a",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,16 +17,25 @@
                 {
                     "name": "Drag",
                     "type": "Value",
-                    "id": "6fcba970-349e-416f-9f2f-e83bbbbf3820",
+                    "id": "7b984a77-2d8c-4f72-ada0-4ed90419c91a",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
+                    "name": "DragButton",
+                    "type": "Button",
+                    "id": "3f6000e1-c620-43c2-86e2-f9f66d298b16",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Zoom",
                     "type": "Value",
-                    "id": "00afedb6-b84d-4c5d-a994-d4710b527b14",
+                    "id": "c002d5b6-6441-4cb2-902a-8f500b3a596c",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -36,7 +45,7 @@
             "bindings": [
                 {
                     "name": "2D Vector",
-                    "id": "fedb1d46-fac3-4f4b-bc2b-9f067fe88487",
+                    "id": "8972943c-025a-4a43-9b48-a727adeebd22",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -47,7 +56,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "748f00d2-47f0-4141-b28d-37ee2cbef7ab",
+                    "id": "f34e8129-b6a6-488a-a8ea-968bf5c2807f",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -58,7 +67,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "e09779ec-1507-4a29-8161-a413fcb90c31",
+                    "id": "3e62a9e6-ddb1-4d67-bbc0-2920db9858f8",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -69,7 +78,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "62248d3b-3764-4c4f-845b-f616d9db3b5c",
+                    "id": "6ecdc098-5c51-41f1-aa84-df765370898e",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -80,7 +89,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "3ff2bc7c-074d-4a15-8c2f-ec818a6e0512",
+                    "id": "8eed5c03-922a-42e0-b241-18ba34ed1b6f",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -91,9 +100,9 @@
                 },
                 {
                     "name": "",
-                    "id": "cdabb997-f072-46a8-aabb-82f876eb0b8d",
+                    "id": "bf4980d7-6e04-4605-8cd7-d41fc31e5034",
                     "path": "<Mouse>/delta",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Drag",
@@ -102,8 +111,19 @@
                 },
                 {
                     "name": "",
-                    "id": "61bff3d6-61fd-4345-a809-3b1dd45f4996",
-                    "path": "<Mouse>/scroll/down",
+                    "id": "56a68457-7649-49e0-abb4-9889071f9193",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a48d5a3-752c-481a-b6f9-88452ed54ef9",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

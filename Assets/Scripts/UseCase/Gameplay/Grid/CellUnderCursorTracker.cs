@@ -1,7 +1,7 @@
-﻿using Domain.Gameplay.MessagesDto.Grid;
+﻿using Domain.Gameplay.MessagesDto.Camera;
+using Domain.Gameplay.MessagesDto.Grid;
 using Domain.Gameplay.Model.Grid;
 using UnityEngine;
-using VContainer;
 using MessagePipe;
 using VContainer.Unity;
 
@@ -14,18 +14,27 @@ namespace UseCase.Gameplay.Grid
         private readonly float _selectionRadius;
         private GridCellModel _lastCellUnderCursor;
 
+        private bool _cameraDragging;
+
         public CellUnderCursorTracker(
             GetGridCellUseCase getCellUseCase,
             IPublisher<CellUnderCursorMessage> publisher,
+            ISubscriber<CameraDragStartedMessage> dragStart,
+            ISubscriber<CameraDragEndedMessage> dragEnd,
             float selectionRadius = 0f)
         {
             _getCellUseCase = getCellUseCase;
             _publisher = publisher;
             _selectionRadius = selectionRadius;
+
+            // Подписываемся на события через MessagePipe
+            dragStart.Subscribe(_ => _cameraDragging = true);
+            dragEnd.Subscribe(_ => _cameraDragging = false);
         }
 
         public void Tick()
         {
+            if (_cameraDragging) return; // не обновляем ячейку во время drag
             SelectNearestCell();
         }
 
@@ -34,14 +43,16 @@ namespace UseCase.Gameplay.Grid
             if (_getCellUseCase.CurrentGrid == null)
             {
                 _publisher.Publish(new CellUnderCursorMessage(null));
+                _lastCellUnderCursor = null;
                 return;
             }
 
-            Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+            Ray ray = UnityEngine.Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             if (!plane.Raycast(ray, out float distance))
             {
                 _publisher.Publish(new CellUnderCursorMessage(null));
+                _lastCellUnderCursor = null;
                 return;
             }
 

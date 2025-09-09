@@ -9,7 +9,7 @@
     "UniTask",
     "InfrastructureProvaiders",
     "DomainApplication",
-    "Input System",
-    "InfrastructureinputAsset"
+    "InfrastructureInput",
+    "Unity.InputSystem"
   ]
 }
