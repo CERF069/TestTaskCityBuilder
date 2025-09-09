@@ -1,0 +1,12 @@
+﻿{
+  "name": "InfrastructureProvaiders",
+  "references": [
+    "ContractsInterfaces",
+    "DomainGameplay",
+    "VContainer",
+    "MessagePipe",
+    "UniRx",
+    "UniTask",
+    "DomainApplication"
+  ]
+}

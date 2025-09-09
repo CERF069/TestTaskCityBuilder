@@ -1,0 +1,16 @@
+﻿{
+  "name": "UseCaseGameplay",
+  "references": [
+    "ContractsInterfaces",
+    "DomainGameplay",
+    "VContainer",
+    "MessagePipe",
+    "UniRx",
+    "UniTask",
+    "InfrastructureProvaiders",
+    "DomainApplication",
+    "InfrastructureInput",
+    "Unity.InputSystem",
+    "InfrastructureRepositories"
+  ]
+}
